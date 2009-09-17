@@ -1,5 +1,5 @@
 package OpenSocialX::Shindig::Crypter;
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 # ABSTRACT: OpenSocial Shindig Crypter
 
@@ -126,8 +126,9 @@ my $APPURL_KEY = "u";
 my $MODULE_KEY = "m";
 
 sub create_token {
-    my ( $self, $data ) = @_;
+    my $self = shift;
 
+    my $data = defined $_[0] && ref( $_[0] ) eq 'HASH' ? shift : {@_};
     my $token_data = {
         $OWNER_KEY  => $data->{owner},
         $APP_KEY    => $data->{app},
@@ -149,7 +150,7 @@ OpenSocialX::Shindig::Crypter - OpenSocial Shindig Crypter
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
@@ -183,7 +184,7 @@ use Perl L<OpenSocialX::Shindig::Crypter> (this module) to create B<st=> encrypt
 
 =item *
 
-the php C<BasicBlobCrypter.php> will unwrap the token and validate it. The file is in the C<php>dir of this .tar.gz or you can download it from L<http://github.com/fayland/opensocialx-shindig-crypter/raw/master/php/BasicBlobCrypter.php>
+the php C<BasicBlobCrypter.php> will unwrap the token and validate it. The file is in the C<php> dir of this .tar.gz or you can download it from L<http://github.com/fayland/opensocialx-shindig-crypter/raw/master/php/BasicBlobCrypter.php>
 
 you can copy it to the dir of C<extension_class_paths> defined in shindig/config/container.php, it will override the default C<BasicBlobCrypter.php> provided by shindig.
 

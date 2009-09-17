@@ -2,7 +2,7 @@ NAME
     OpenSocialX::Shindig::Crypter - OpenSocial Shindig Crypter
 
 VERSION
-    version 0.01
+    version 0.02
 
 SYNOPSIS
         use OpenSocialX::Shindig::Crypter;
@@ -36,7 +36,7 @@ DESCRIPTION
         encrypted token through "create_token"
 
     *   the php "BasicBlobCrypter.php" will unwrap the token and validate
-        it. The file is in the "php"dir of this .tar.gz or you can download
+        it. The file is in the "php" dir of this .tar.gz or you can download
         it from
         <http://github.com/fayland/opensocialx-shindig-crypter/raw/master/ph
         p/BasicBlobCrypter.php>
