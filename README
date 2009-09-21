@@ -2,7 +2,7 @@ NAME
     OpenSocialX::Shindig::Crypter - OpenSocial Shindig Crypter
 
 VERSION
-    version 0.02
+    version 0.03
 
 SYNOPSIS
         use OpenSocialX::Shindig::Crypter;
@@ -100,6 +100,27 @@ DESCRIPTION
     *   checkTimestamp
 
     *   _serializeAndTimestamp
+
+  EXAMPLE
+        use URI::Escape;
+        use MIME::Base64;
+        use OpenSocialX::Shindig::Crypter;
+
+        my $crypter = OpenSocialX::Shindig::Crypter->new( {
+            cipher => $config->{opensocial}->{cipherKey},
+            hmac   => $config->{opensocial}->{hmacKey},
+            iv     => $config->{opensocial}->{ivKey},
+        } );
+        my $security_token = uri_escape( encode_base64( $crypter->create_token( {
+            owner   => $owner_id,
+            viewer  => $viwer_id,
+            app     => $gadget->{id},
+            domain  => $config->{opensocial}->{container},
+            app_url => $gadget->{url},
+        } ) ) );
+
+        # later in tt2 or others
+        # st=$security_token
 
 AUTHOR
       Fayland Lam <fayland@gmail.com>

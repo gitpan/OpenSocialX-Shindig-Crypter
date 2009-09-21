@@ -16,4 +16,4 @@ requires:
   URI::Escape: 0
 resources:
   repository: http://github.com/fayland/opensocialx-shindig-crypter/tree
-version: 0.02
+version: 0.03
